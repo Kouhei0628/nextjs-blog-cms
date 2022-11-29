@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Date from "../components/date";
@@ -15,7 +15,7 @@ export type PostData = {
   revisedAt: string;
 };
 
-export const getStaticProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
   allPostsData: PostData;
 }> = async () => {
   const data = await client.get({ endpoint: "posts" });

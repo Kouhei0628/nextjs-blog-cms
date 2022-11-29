@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { PostData } from "..";
 import Date from "../../components/date";
@@ -70,7 +70,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
   postData: PostData | null;
 }> = async ({ params }) => {
   if (params) {
