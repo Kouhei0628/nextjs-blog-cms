@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticPaths } from "next";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { PostData } from "..";
 import Date from "../../components/date";
@@ -60,15 +60,6 @@ const NotFound = () => (
     </div>
   </>
 );
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await client.get({ endpoint: "posts" });
-  const paths = data.contents.map(({ id }: { id: string }) => `/posts/${id}`);
-  return {
-    paths,
-    fallback: false,
-  };
-};
 
 export const getServerSideProps: GetServerSideProps<{
   postData: PostData | null;
